@@ -13,6 +13,6 @@ def main():
     st.balloons()
     if 'log' not in st.session_state:
         st.session_state.log = False
-    st.switch_page("pages/1_Home.py")
+    st.switch_page(r"pages/1_Home.py")
 if __name__ == "__main__":
     main()

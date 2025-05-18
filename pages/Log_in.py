@@ -23,9 +23,9 @@ def display_login():
             if username in users and users[username] == password:
                 st.session_state.log = True
                 st.success(f"Welcome, {username}!")
-                st.switch_page("pages\Dashboard.py")
+                st.switch_page(r"pages\Dashboard.py")
             else:
                 st.error("Invalid username or password.")
     else:
-        st.switch_page("pages\Dashboard.py")
+        st.switch_page(r"pages\Dashboard.py")
 display_login()

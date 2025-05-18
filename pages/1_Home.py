@@ -52,7 +52,7 @@ def display_home():
             colu1, colu2 = st.columns([0.2,0.8])
             with colu1:
                 if st.button('Log In', key = 'login'):
-                    st.switch_page('pages\Log_in.py')
+                    st.switch_page(r'pages\Log_in.py')
             # with colu2:
             #     if st.button('Sign up'):
                     # st.switch_page('pages\Log_in.py')
