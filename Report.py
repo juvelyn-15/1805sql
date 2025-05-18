@@ -69,6 +69,7 @@ class SchoolAnalytics:
         finally:
             cursor.close()
             conn.close()
+            
     def generate_scorecard(self, student_id: int, term: int = None, year: int = None):
         conn = self.engine.raw_connection()
         try:
@@ -282,9 +283,9 @@ class SchoolAnalytics:
         try:
             cursor = conn.cursor()
             cursor.callproc("sp_top_students_overall", [term, year, top_n])
-            result_sets = cursor.stored_results()
-            rows = next(result_sets).fetchall()
-            col_names = result_sets.column_names
+            result = next(cursor.stored_results())
+            rows = result.fetchall()
+            col_names = result.column_names
             top_students = [dict(zip(col_names, row)) for row in rows]
         finally:
             cursor.close()
@@ -294,10 +295,11 @@ class SchoolAnalytics:
             raise ValueError(f"No data found for Term {term}, Year {year}.")
 
         return pd.DataFrame(top_students).rename(columns={
-            "StudentName": "Student Name",
-            "ClassName": "Class Name",
-            "AverageScore": "Average Score"
-        })
+        "StudentName": "Student Name",
+        "ClassName": "Class Name",
+        "AverageScore": "Average Score"
+    })
+
 
     def top_students_per_subject(self, term: int, year: int, top_n: int, subject_name: str = None):
         conn = self.engine.raw_connection()
@@ -320,4 +322,3 @@ class SchoolAnalytics:
             "StudentName": "Student Name",
             "AverageScore": "Average Score"
         })
-    
