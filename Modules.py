@@ -62,11 +62,11 @@ class VisualHandler:
             #User.user_management()
             if st.session_state == False:
                 if st.button("Log In"):
-                    st.switch_page("pages\Log_in.py")
+                    st.switch_page(r"pages\Log_in.py")
             else:
                 if st.button("Log Out"):
                     st.session_state.log = False
-                    st.switch_page("pages\Log_in.py")
+                    st.switch_page(r"pages\Log_in.py")
 
             st.divider()
             st.markdown('<div style="text-align: center">© 2025 by Group 4 - DSEB 65B</div>', unsafe_allow_html=True)

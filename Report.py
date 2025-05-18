@@ -49,6 +49,26 @@ class SchoolAnalytics:
         finally:
             cursor.close()
             conn.close()
+    def take_term(self):
+        conn = self.engine.raw_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT DISTINCT Term FROM Academic_period")
+            result = cursor.fetchall()
+            return (row[0] for row in result)  # extract only the class names
+        finally:
+            cursor.close()
+            conn.close()
+    def take_year(self):
+        conn = self.engine.raw_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT DISTINCT Year FROM Academic_period")
+            result = cursor.fetchall()
+            return (row[0] for row in result)  # extract only the class names
+        finally:
+            cursor.close()
+            conn.close()
     def generate_scorecard(self, student_id: int, term: int = None, year: int = None):
         conn = self.engine.raw_connection()
         try:
@@ -300,3 +320,4 @@ class SchoolAnalytics:
             "StudentName": "Student Name",
             "AverageScore": "Average Score"
         })
+    

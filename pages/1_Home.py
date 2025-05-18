@@ -13,19 +13,6 @@ st.set_page_config(
 
 
 VisualHandler.initial() # custom sidebar, custom background...
-# st.markdown(
-#     f"""
-#     <style>
-#     .stApp {{
-#         background-image:  url("data:image/jpg;base64,{bg_image}");
-#         background-size: cover;
-#         background-repeat: no-repeat;
-#         background-attachment: fixed;
-#     }}
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
 
 def display_home(): 
     col1, col2= st.columns([0.5,0.5])
@@ -52,7 +39,7 @@ def display_home():
             colu1, colu2 = st.columns([0.2,0.8])
             with colu1:
                 if st.button('Log In', key = 'login'):
-                    st.switch_page(r'pages\Log_in.py')
+                    st.switch_page('pages/4_Log_in.py')
             # with colu2:
             #     if st.button('Sign up'):
                     # st.switch_page('pages\Log_in.py')
